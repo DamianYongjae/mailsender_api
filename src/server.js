@@ -26,12 +26,13 @@ export const sendMailNew = (email) => {
 
 export const sendScheduledMail = (address, subject, content) => {
   let date = Math.round(new Date("June 29, 2020 12:37:00").getTime() / 1000);
+  let tempDate = Math.round(new Date().getTime() / 1000);
   const email = {
     from: "CBLM@CBLM.com",
     to: address,
     subject: subject,
     html: `기도 지향 내용: <p>${content}</p>`,
-    send_at: date,
+    send_at: tempDate,
   };
   return sendMailNew(email);
 };
