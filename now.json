@@ -4,7 +4,8 @@
   },
   "headers": [
     {
-      "source": "/.*",
+      "source": "/sendmail",
+      "destination": "/src/sendmail",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
