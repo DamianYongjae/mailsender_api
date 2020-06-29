@@ -60,6 +60,6 @@ server.post(`/sendmail`, (req, res) => {
   }
 });
 
-server.listen({ port: PORT }, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+// server.listen({ port: PORT }, () =>
+//   console.log(`Server running on http://localhost:${PORT}`)
+// );
