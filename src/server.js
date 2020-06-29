@@ -4,7 +4,6 @@ import express from "express";
 import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
 import dotenv from "dotenv";
-import micro from "micro-cors";
 
 dotenv.config();
 
@@ -42,15 +41,19 @@ export const sendScheduledMail = (address, subject, content) => {
 const server = express();
 server.use(
   cors({
-    credentials: true,
     origin: "*",
+    optionsSuccessStatus: 200,
   }),
   express.json()
 );
-const mCors = micro();
 
-mCors(
-  server.post(`/sendmail`, (req, res) => {
+server.post(
+  `/sendmail`,
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200,
+  }),
+  (req, res) => {
     try {
       let data = {
         address: req.body.email,
@@ -62,5 +65,5 @@ mCors(
     } catch (error) {
       console.log(error);
     }
-  })
+  }
 );
