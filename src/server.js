@@ -57,7 +57,7 @@ server.post(`/sendmail`, (req, res) => {
     sendScheduledMail(data.address, data.subject, data.content);
     res.end();
   } catch (error) {
-    res.status(500).send();
+    console.log(error);
   }
 });
 
