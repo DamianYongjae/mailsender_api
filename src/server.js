@@ -4,6 +4,7 @@ import express from "express";
 import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
 import dotenv from "dotenv";
+import micro from "micro-cors";
 
 dotenv.config();
 
@@ -46,17 +47,20 @@ server.use(
   }),
   express.json()
 );
+const mCors = micro();
 
-server.post(`/sendmail`, (req, res) => {
-  try {
-    let data = {
-      address: req.body.email,
-      subject: "26 차 요한연수 지향",
-      content: req.body.intention,
-    };
-    sendScheduledMail(data.address, data.subject, data.content);
-    res.end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+mCors(
+  server.post(`/sendmail`, (req, res) => {
+    try {
+      let data = {
+        address: req.body.email,
+        subject: "26 차 요한연수 지향",
+        content: req.body.intention,
+      };
+      sendScheduledMail(data.address, data.subject, data.content);
+      res.end();
+    } catch (error) {
+      console.log(error);
+    }
+  })
+);
