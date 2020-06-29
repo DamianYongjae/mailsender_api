@@ -63,7 +63,6 @@ server
   .then((resp) => resp.json())
   .then((data) => {
     console.log(data);
-    res.end();
   });
 
 server.listen(4000, function () {
