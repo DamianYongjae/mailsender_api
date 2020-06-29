@@ -5,31 +5,21 @@
   "regions": ["iad1"],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/.*",
       "headers": [
         {
-          "key": "access-control-allow-origin",
+          "key": "Access-Control-Allow-Origin",
           "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-Requested-With, Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept"
+        },
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": ".*",
-      "methods": ["GET", "POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-        "Access-Control-Allow-Credentials": "true"
-      },
-      "dest": "index.js",
-      "continue": true
-    },
-    {
-      "src": "/src",
-      "methods": ["POST"],
-      "dest": "index.js"
     }
   ]
 }
