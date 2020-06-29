@@ -3,16 +3,17 @@ import cors from "cors";
 import express from "express";
 import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-
-const UNIX_Timestamp = 1575909015;
 
 export const sendMailNew = (email) => {
   const transport = nodemailer.createTransport(
     nodemailerSendgrid({
       apiKey: process.env.SENDGRID_API_KEY,
-    }),
+    })
   );
 
   return transport.sendMail(email, (err, info) => {
@@ -42,7 +43,7 @@ server.use(
   cors({
     origin: "*",
   }),
-  express.json(),
+  express.json()
 );
 
 server.post(`/sendmail`, (req, res) => {
@@ -59,7 +60,6 @@ server.post(`/sendmail`, (req, res) => {
   }
 });
 
-server.listen(
-  { port: PORT },
-  () => console.log(`Server running on http://localhost:${PORT}`),
+server.listen({ port: PORT }, () =>
+  console.log(`Server running on http://localhost:${PORT}`)
 );

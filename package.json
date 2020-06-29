@@ -15,6 +15,7 @@
     "@babel/plugin-transform-runtime": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemailer": "^6.4.10",
     "nodemailer-sendgrid": "^1.0.3"
