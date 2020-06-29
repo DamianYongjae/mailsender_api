@@ -39,11 +39,7 @@ export const sendScheduledMail = (address, subject, content) => {
 
 const server = express();
 server.use(
-  cors({
-    origin: "*",
-    credentials: true,
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }),
+  cors(),
   express.json(),
 );
 
