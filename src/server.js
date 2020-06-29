@@ -47,19 +47,24 @@ server.use(
   express.json()
 );
 
-server.post(`/sendmail`, (req, res) => {
-  try {
-    let data = {
-      address: req.body.email,
-      subject: "26 차 요한연수 지향",
-      content: req.body.intention,
-    };
-    sendScheduledMail(data.address, data.subject, data.content);
+server
+  .post(`/sendmail`, (req, res) => {
+    try {
+      let data = {
+        address: req.body.email,
+        subject: "26 차 요한연수 지향",
+        content: req.body.intention,
+      };
+      sendScheduledMail(data.address, data.subject, data.content);
+    } catch (error) {
+      console.log(error);
+    }
+  })
+  .then((resp) => resp.json())
+  .then((data) => {
+    console.log(data);
     res.end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+  });
 
 server.listen(4000, function () {
   console.log("app is listening");
