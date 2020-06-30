@@ -17,11 +17,11 @@ server.use(express.json());
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://mailsender-api.vercel.app"
+    "*",
   ); // update to match the domain you will make the request from
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization"
+    "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization",
   );
   if (req.method === "OPTIONS") {
     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
@@ -34,7 +34,7 @@ export const sendMailNew = (email) => {
   const transport = nodemailer.createTransport(
     nodemailerSendgrid({
       apiKey: process.env.SENDGRID_API_KEY,
-    })
+    }),
   );
 
   return transport.sendMail(email, (res, err) => {
