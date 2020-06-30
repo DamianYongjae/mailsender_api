@@ -11,7 +11,6 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 const server = express();
-server.use(express.Router());
 server.use(cors({ origin: true, credentials: true }));
 server.use(express.json());
 server.use((req, res, next) => {
