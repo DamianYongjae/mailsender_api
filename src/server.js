@@ -51,6 +51,7 @@ server.post(`/sendmail`, (req, res) => {
       content: req.body.intention,
     };
     sendScheduledMail(data.address, data.subject, data.content);
+    return res;
   } catch (error) {
     console.log(error);
   }
