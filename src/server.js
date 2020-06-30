@@ -16,13 +16,7 @@ export const sendMailNew = (email) => {
     })
   );
 
-  return transport.sendMail(email, (err, info) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(info);
-    }
-  });
+  return transport.sendMail(email);
 };
 
 export const sendScheduledMail = (address, subject, content) => {
