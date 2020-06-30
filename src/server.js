@@ -76,7 +76,7 @@ export const sendScheduledMail = (address, subject, content) => {
   // return sendMailNew(email);
 };
 
-server.post(`/sendmail`, async (req, res) => {
+server.post(`/sendmail`, cors(), async (req, res) => {
   let data = {
     address: req.body.email,
     subject: "26 차 요한연수 지향",
