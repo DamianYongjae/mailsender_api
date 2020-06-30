@@ -36,6 +36,7 @@ const server = express();
 server.use(
   cors({
     origin: "*",
+    credentials: true,
     optionsSuccessStatus: 200,
   }),
   express.json()
@@ -43,23 +44,19 @@ server.use(
 
 server.options("*", cors());
 
-server.post(
-  `/sendmail`,
-  cors({ origin: "https://stoic-mccarthy-046543.netlify.app" }),
-  (req, res) => {
-    try {
-      let data = {
-        address: req.body.email,
-        subject: "26 차 요한연수 지향",
-        content: req.body.intention,
-      };
-      sendScheduledMail(data.address, data.subject, data.content);
-      res.send();
-    } catch (error) {
-      console.log(error);
-    }
+server.post(`/sendmail`, (req, res) => {
+  try {
+    let data = {
+      address: req.body.email,
+      subject: "26 차 요한연수 지향",
+      content: req.body.intention,
+    };
+    sendScheduledMail(data.address, data.subject, data.content);
+    res.send();
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 server.listen(4000, function () {
   console.log("app is listening");
