@@ -54,17 +54,17 @@ const server = express();
 server.use(express.Router());
 server.use(cors({ origin: true, credentials: true }));
 server.use(express.json());
-server.use(function (req, res, next) {
+server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, Content-Type, X-Auth-Token"
+    "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization"
   );
-  next();
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+  // next();
 });
 
 server.post(`/sendmail`, async (req, res) => {
