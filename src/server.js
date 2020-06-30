@@ -38,15 +38,14 @@ export const sendScheduledMail = async (address, subject, content) => {
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  try{
+  try {
     await sgMail.send(email);
-  }catch (error) {
+  } catch (error) {
     console.error(error);
-    if(error.response){
-      console.error(error.response.body)
+    if (error.response) {
+      console.error(error.response.body);
     }
   }
-  );
 
   // return sendMailNew(email);
 };
@@ -74,7 +73,6 @@ server.post(`/sendmail`, async (req, res) => {
     content: req.body.intention,
   };
   try {
-    
     sendScheduledMail(data.address, data.subject, data.content);
 
     // res.end();
