@@ -10,6 +10,26 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
+const server = express();
+server.use(express.Router());
+server.use(cors({ origin: true, credentials: true }));
+server.use(express.json());
+server.use((req, res, next) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://mailsender-api.vercel.app"
+  ); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+  next();
+});
+
 export const sendMailNew = (email) => {
   const transport = nodemailer.createTransport(
     nodemailerSendgrid({
@@ -49,23 +69,6 @@ export const sendScheduledMail = async (address, subject, content) => {
 
   // return sendMailNew(email);
 };
-
-const server = express();
-server.use(express.Router());
-server.use(cors({ origin: true, credentials: true }));
-server.use(express.json());
-server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization"
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-  next();
-});
 
 server.post(`/sendmail`, async (req, res) => {
   let data = {
