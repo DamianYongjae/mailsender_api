@@ -41,6 +41,8 @@ server.use(
   express.json()
 );
 
+server.options("*", cors());
+
 server.post(
   `/sendmail`,
   cors({ origin: "https://stoic-mccarthy-046543.netlify.app" }),
