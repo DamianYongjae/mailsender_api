@@ -8,11 +8,16 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 4000;
-
 const server = express();
-server.use(cors({ origin: true, credentials: true }));
-server.use(express.json());
+server.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }),
+);
+server.use(express.json({ type: ["application/json", "text/plain"] })); // for parsing application/json
+server.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
@@ -40,6 +45,7 @@ export const sendMailNew = (email) => {
     if (err) {
       console.log(err);
     } else {
+      console.log(res);
       res.end();
     }
   });
@@ -76,9 +82,8 @@ server.post(`/sendmail`, async (req, res) => {
     content: req.body.intention,
   };
   try {
-    sendScheduledMail(data.address, data.subject, data.content);
-
-    res.send();
+    await sendScheduledMail(data.address, data.subject, data.content);
+    res.end();
   } catch (error) {
     console.log(error);
   }
