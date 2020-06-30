@@ -43,7 +43,7 @@ server.use(
 );
 server.use(express.urlencoded({ extended: true }));
 
-server.post(`/sendmail`, (req, res) => {
+server.post(`/sendmail`, cors(), (req, res) => {
   try {
     let data = {
       address: req.body.email,
