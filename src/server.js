@@ -41,7 +41,10 @@ server.use(function (req, res, next) {
     "Access-Control-Allow-Methods",
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
-  res.header("Access-Control-Allow-Headers", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, Content-Type, X-Auth-Token"
+  );
   next();
 });
 
