@@ -68,9 +68,9 @@ export const sendScheduledMail = async (address, subject, content) => {
     await sgMail.send(email);
   } catch (error) {
     console.error(error);
-    if (error.response) {
-      console.error(error.response.body);
-    }
+    // if (error.response) {
+    //   console.error(error.response.body);
+    // }
   }
 
   // return sendMailNew(email);
@@ -84,7 +84,7 @@ server.post(`/sendmail`, async (req, res) => {
   };
   try {
     await sendScheduledMail(data.address, data.subject, data.content);
-    res.end();
+    res.send(JSON.stringify(res));
   } catch (error) {
     console.log(error);
   }
