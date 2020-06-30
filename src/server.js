@@ -54,7 +54,7 @@ export const sendMailNew = (email) => {
   });
 };
 
-export const sendScheduledMail = async (address, subject, content) => {
+export const sendScheduledMail = (address, subject, content) => {
   let date = Math.round(new Date("June 29, 2020 12:37:00").getTime() / 1000);
   let tempDate = Math.round(new Date().getTime() / 1000);
   const email = {
@@ -66,14 +66,11 @@ export const sendScheduledMail = async (address, subject, content) => {
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  try {
-    await sgMail.send(email);
-  } catch (error) {
-    console.error(error);
-    // if (error.response) {
-    //   console.error(error.response.body);
-    // }
-  }
+  sgMail.send(email);
+
+  // if (error.response) {
+  //   console.error(error.response.body);
+  // }
 
   // return sendMailNew(email);
 };
@@ -85,14 +82,9 @@ server.post(`/sendmail`, async (req, res) => {
     content: req.body.intention,
   };
   try {
-    await sendScheduledMail(data.address, data.subject, data.content).then(
-      (resp) => resp.json(),
-    )
-      .then((data) => {
-        console.log(`Success: ${data}`);
-        res.send(JSON.stringify(data));
-      })
+    await sendScheduledMail(data.address, data.subject, data.content)
       .catch((e) => console.log(`Error: ${e}`)); // res.send(JSON.stringify(res));
+    return res.end();
   } catch (error) {
     console.log(error);
   }
