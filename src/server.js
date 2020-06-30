@@ -33,15 +33,7 @@ export const sendScheduledMail = (address, subject, content) => {
 };
 
 const server = express();
-server.use(
-  cors({
-    origin: "*",
-    credentials: true,
-    optionsSuccessStatus: 200,
-  }),
-  express.json({ type: ["application/json", "text/plain"] })
-);
-server.use(express.urlencoded({ extended: true }));
+server.use(cors());
 
 server.post(`/sendmail`, cors(), (req, res) => {
   try {
