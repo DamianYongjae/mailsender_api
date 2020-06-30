@@ -16,7 +16,13 @@ export const sendMailNew = (email) => {
     })
   );
 
-  return transport.sendMail(email);
+  return transport.sendMail(email, (res, err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.end();
+    }
+  });
 };
 
 export const sendScheduledMail = (address, subject, content) => {
@@ -57,7 +63,7 @@ server.post(`/sendmail`, (req, res) => {
     };
     sendScheduledMail(data.address, data.subject, data.content);
 
-    res.end(JSON.stringify(res.json()));
+    res.end();
   } catch (error) {
     console.log(error);
   }
