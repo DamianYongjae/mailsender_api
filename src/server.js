@@ -75,7 +75,7 @@ server.post(`/sendmail`, async (req, res) => {
   try {
     sendScheduledMail(data.address, data.subject, data.content);
 
-    // res.end();
+    res.send();
   } catch (error) {
     console.log(error);
   }
