@@ -101,3 +101,5 @@ server.post(`/:sendmail`, async (req, res) => {
 server.listen(4000, function () {
   console.log("app is listening");
 });
+
+export default server;
