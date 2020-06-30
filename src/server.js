@@ -34,7 +34,7 @@ export const sendScheduledMail = (address, subject, content) => {
 
 const server = express();
 server.use(cors({ origin: true, credentials: true }));
-
+server.use(express.json());
 server.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.setHeader(
@@ -47,17 +47,19 @@ server.use(function (req, res, next) {
 
 server.post(`/sendmail`, (req, res) => {
   try {
+    console.log(req);
     let data = {
       address: req.body.email,
       subject: "26 차 요한연수 지향",
       content: req.body.intention,
     };
     sendScheduledMail(data.address, data.subject, data.content);
+    res.end();
   } catch (error) {
     console.log(error);
   }
 });
 
-// server.listen(4000, function () {
-//   console.log("app is listening");
-// });
+server.listen(4000, function () {
+  console.log("app is listening");
+});
