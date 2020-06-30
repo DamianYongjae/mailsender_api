@@ -35,6 +35,8 @@ server.use((req, res, next) => {
   next();
 });
 
+server.options("*", cors());
+
 export const sendMailNew = (email) => {
   const transport = nodemailer.createTransport(
     nodemailerSendgrid({
