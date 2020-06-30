@@ -39,10 +39,9 @@ server.use(
     credentials: true,
     optionsSuccessStatus: 200,
   }),
-  express.json()
+  express.json({ type: ["application/json", "text/plain"] })
 );
-
-server.options("*", cors());
+server.use(express.urlencoded({ extended: true }));
 
 server.post(`/sendmail`, (req, res) => {
   try {
