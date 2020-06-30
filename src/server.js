@@ -42,12 +42,6 @@ server.use(function (req, res, next) {
     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
   res.header("Access-Control-Allow-Headers", "*");
-  req.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  req.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-  req.header("Access-Control-Allow-Headers", "*");
   next();
 });
 
