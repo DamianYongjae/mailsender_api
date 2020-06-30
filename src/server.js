@@ -51,6 +51,7 @@ export const sendScheduledMail = async (address, subject, content) => {
 };
 
 const server = express();
+server.use(express.Router());
 server.use(cors({ origin: true, credentials: true }));
 server.use(express.json());
 server.use(function (req, res, next) {
