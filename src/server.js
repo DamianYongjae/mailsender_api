@@ -41,7 +41,7 @@ server.use(
   express.json()
 );
 
-server.post(`/sendmail`, (req, res) => {
+server.get(`/sendmail`, (req, res) => {
   try {
     let data = {
       address: req.body.email,
