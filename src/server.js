@@ -85,8 +85,14 @@ server.post(`/sendmail`, async (req, res) => {
     content: req.body.intention,
   };
   try {
-    await sendScheduledMail(data.address, data.subject, data.content);
-    res.send(JSON.stringify(res));
+    await sendScheduledMail(data.address, data.subject, data.content).then(
+      (resp) => resp.json()
+    )
+      .then((data) => {
+        console.log(`Success: ${data}`);
+        res.send(JSON.stringify(data));
+      })
+      .catch((e) => console.log(`Error: ${e}`));// res.send(JSON.stringify(res));
   } catch (error) {
     console.log(error);
   }
