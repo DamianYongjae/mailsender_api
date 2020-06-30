@@ -78,7 +78,7 @@ export const sendScheduledMail = async (address, subject, content) => {
   // return sendMailNew(email);
 };
 
-server.post(`/sendmail`, async (req, res) => {
+server.post(`/:sendmail`, async (req, res) => {
   let data = {
     address: req.body.email,
     subject: "26 차 요한연수 지향",
@@ -86,13 +86,13 @@ server.post(`/sendmail`, async (req, res) => {
   };
   try {
     await sendScheduledMail(data.address, data.subject, data.content).then(
-      (resp) => resp.json()
+      (resp) => resp.json(),
     )
       .then((data) => {
         console.log(`Success: ${data}`);
         res.send(JSON.stringify(data));
       })
-      .catch((e) => console.log(`Error: ${e}`));// res.send(JSON.stringify(res));
+      .catch((e) => console.log(`Error: ${e}`)); // res.send(JSON.stringify(res));
   } catch (error) {
     console.log(error);
   }
