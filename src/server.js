@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import nodemailer from "nodemailer";
 import nodemailerSendgrid from "nodemailer-sendgrid";
+import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -35,7 +36,19 @@ export const sendScheduledMail = (address, subject, content) => {
     html: `기도 지향 내용: <p>${content}</p>`,
     send_at: tempDate,
   };
-  return sendMailNew(email);
+
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.send(email).then(
+    () => {},
+    (error) => {
+      console.log(error);
+      if (error.response) {
+        console.log(error.response.body);
+      }
+    }
+  );
+
+  // return sendMailNew(email);
 };
 
 const server = express();
