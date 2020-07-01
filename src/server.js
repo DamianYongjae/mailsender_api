@@ -32,12 +32,12 @@ server.use(express.urlencoded({ extended: true })); // for parsing application/x
 //   next();
 // });
 
-// server.options("*", cors());
+server.options("*", cors());
 
 server.use("/", router);
 
-server.listen(4000, function () {
-  console.log("app is listening");
-});
+// server.listen(4000, function () {
+//   console.log("app is listening");
+// });
 export { router };
 export default server;
