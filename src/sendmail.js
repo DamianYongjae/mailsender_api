@@ -36,15 +36,14 @@ export const sendScheduledMail = (address, subject, content) => {
   return sgMail.send(email);
 };
 
-export const sendmail = async (req, res) => {
+export const sendmail = (req, res) => {
   let data = {
     address: req.body.email,
     subject: req.body.subject,
     content: req.body.intention,
   };
   try {
-    await sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
-    return res.end();
+    sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
   } catch (error) {
     console.log(error);
   }
