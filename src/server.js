@@ -1,7 +1,9 @@
 import cors from "cors";
 import express from "express";
 import { sendScheduledMail } from "./sendmail";
+const router = express.Router();
 
+router.post("/sendmail", sendScheduledMail);
 const server = express();
 server.use(
   cors({
@@ -28,6 +30,8 @@ server.use((req, res, next) => {
   }
   next();
 });
+
+server.use("/", router);
 
 server.options("*", cors());
 
