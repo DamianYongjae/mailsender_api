@@ -1,9 +1,9 @@
 import cors from "cors";
 import express from "express";
-import { sendScheduledMail } from "./sendmail";
+import { sendmail } from "./sendmail";
 const router = express.Router();
 
-router.post("/sendmail", sendScheduledMail);
+router.post("/sendmail", sendmail);
 const server = express();
 server.use(
   cors({
@@ -34,20 +34,6 @@ server.use((req, res, next) => {
 server.use("/", router);
 
 server.options("*", cors());
-
-server.post(`/sendmail`, cors(), async (req, res) => {
-  let data = {
-    address: req.body.email,
-    subject: req.body.subject,
-    content: req.body.intention,
-  };
-  try {
-    await sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
-    return res.end();
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 server.listen(4000, function () {
   console.log("app is listening");
