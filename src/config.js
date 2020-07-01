@@ -8,7 +8,7 @@ export const sendMailNew = (email) => {
   const transport = nodemailer.createTransport(
     nodemailerSendgrid({
       apiKey: process.env.SENDGRID_API_KEY,
-    }),
+    })
   );
 
   return transport.sendMail(email, (res, err) => {
@@ -33,5 +33,5 @@ export const sendScheduledMail = (address, subject, content) => {
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  return sgMail.send(email);
+  //   return sgMail.send(email);
 };
