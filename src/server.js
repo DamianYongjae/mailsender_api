@@ -1,5 +1,4 @@
 import cors from "cors";
-import micro from "micro-cors";
 import express from "express";
 import { sendmail } from "./sendmail";
 const router = express.Router();
