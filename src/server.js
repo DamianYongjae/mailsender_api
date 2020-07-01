@@ -4,8 +4,6 @@ import express from "express";
 import { sendmail } from "./sendmail";
 const router = express.Router();
 
-router.post("/sendmail", sendmail);
-
 const server = express();
 server.use(
   cors({
@@ -34,8 +32,11 @@ server.options("*", cors());
 
 server.use("/", router);
 
+router.post("/sendmail", sendmail);
+
 server.listen(4000, function () {
   console.log("app is listening");
 });
+
 export { router };
 export default server;
