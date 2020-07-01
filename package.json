@@ -8,6 +8,7 @@
     "babel-node": "^0.0.1-security",
     "nodemon": "^2.0.4"
   },
+  "proxy": "https://mailsender-delta.vercel.app/",
   "dependencies": {
     "@babel/cli": "^7.10.3",
     "@babel/core": "^7.10.3",
