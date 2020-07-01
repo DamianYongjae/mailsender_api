@@ -8,7 +8,7 @@ export const sendmail = async (req, res) => {
   };
   try {
     await sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
-    return res.end();
+    res.end();
   } catch (error) {
     console.log(error);
   }
