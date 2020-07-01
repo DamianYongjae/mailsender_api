@@ -30,7 +30,7 @@ server.use((req, res, next) => {
   next();
 });
 
-// server.options("*", cors());
+server.options("*", cors());
 
 server.use("/", router);
 
@@ -38,4 +38,4 @@ server.listen(4000, function () {
   console.log("app is listening");
 });
 export { router };
-export default micro(server);
+export default server;
