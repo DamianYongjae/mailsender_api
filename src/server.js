@@ -1,8 +1,6 @@
 import cors from "cors";
 import express from "express";
 import { sendScheduledMail } from "./sendmail";
-// import nodemailer from "nodemailer";
-// import nodemailerSendgrid from "nodemailer-sendgrid";
 
 const server = express();
 server.use(
@@ -14,7 +12,6 @@ server.use(
 );
 server.use(express.json({ type: ["application/json", "text/plain"] })); // for parsing application/json
 server.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-server.use("/");
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
