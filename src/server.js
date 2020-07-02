@@ -30,7 +30,16 @@ server.use(express.urlencoded({ extended: true })); // for parsing application/x
 // });
 server.enable("trust proxy");
 
-server.options("*", cors({ origin: "*" }));
+server.options(
+  "*",
+  cors({
+    origin: "*",
+    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
 
 server.use("/", router);
 
