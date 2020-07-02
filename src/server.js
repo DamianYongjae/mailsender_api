@@ -50,17 +50,9 @@ router.options(
   })
 );
 
-router.post(
-  "https://mailsender-api.vercel.app/sendmail",
-  cors({ origin: "*" }),
-  sendmail
-);
+router.post("/sendmail", cors({ origin: "*" }), sendmail);
 
-server.post(
-  "https://mailsender-api.vercel.app/sendmail",
-  cors({ origin: "*" }),
-  sendmail
-);
+server.post("/sendmail", cors({ origin: "*" }), sendmail);
 
 server.listen(4000, function () {
   console.log("app is listening");
