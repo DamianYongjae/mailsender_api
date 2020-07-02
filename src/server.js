@@ -28,6 +28,7 @@ server.use(express.urlencoded({ extended: true })); // for parsing application/x
 //   }
 //   next();
 // });
+server.enable("trust proxy");
 
 server.options("*", cors({ origin: "*" }));
 
