@@ -2,5 +2,6 @@
   "env": {
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-4yo9"
   },
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "rewrites": [{ "source": "/sendmail", "destination": "/src/sendmail" }]
 }
