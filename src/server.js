@@ -27,11 +27,11 @@ server.use((req, res, next) => {
   next();
 });
 
-server.options("*", cors());
+server.options("*", cors({ origin: "*" }));
 
 server.use("/", router);
 
-router.post("/sendmail", sendmail);
+router.post("/sendmail", cors({ origin: "*" }), sendmail);
 
 server.listen(4000, function () {
   console.log("app is listening");
