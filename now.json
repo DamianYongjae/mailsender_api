@@ -30,5 +30,6 @@
       ],
       "mode": "cors"
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/sendmail", "destination": "/src/sendmail" }]
 }
