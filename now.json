@@ -27,9 +27,9 @@
           "key": "Content-Type",
           "value": "text/html"
         }
-      ],
-      "mode": "cors"
+      ]
     }
   ],
+  "mode": "cors",
   "rewrites": [{ "source": "/sendmail", "destination": "/src/sendmail" }]
 }
