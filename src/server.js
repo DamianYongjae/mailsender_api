@@ -6,7 +6,7 @@ const router = express.Router();
 const server = express();
 server.use(
   cors({
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
     origin: "*",
     credentials: true,
