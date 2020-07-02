@@ -42,6 +42,8 @@ server.options(
 
 server.use("/", router);
 
+router.options("*", cors());
+
 router.post("/sendmail", cors({ origin: "*" }), sendmail);
 
 server.listen(4000, function () {
