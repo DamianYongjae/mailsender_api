@@ -50,9 +50,29 @@ router.options(
   })
 );
 
-router.post("/sendmail", cors({ origin: "*" }), sendmail);
+router.post(
+  "/sendmail",
+  cors({
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }),
+  sendmail
+);
 
-server.post("/sendmail", cors({ origin: "*" }), sendmail);
+server.post(
+  "/sendmail",
+  cors({
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+    origin: "*",
+    credentials: true,
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }),
+  sendmail
+);
 
 server.listen(4000, function () {
   console.log("app is listening");
