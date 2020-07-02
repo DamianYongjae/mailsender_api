@@ -5,7 +5,7 @@
   "regions": ["iad1"],
   "headers": [
     {
-      "source": "/src/sendmail.js",
+      "source": "/sendmail",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
