@@ -74,6 +74,8 @@ server.post(
   sendmail
 );
 
+server.use(router);
+
 server.listen(4000, function () {
   console.log("app is listening");
 });
