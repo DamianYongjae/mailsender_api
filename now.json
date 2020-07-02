@@ -1,4 +1,5 @@
 {
+  "type": "static",
   "env": {
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-4yo9"
   },
