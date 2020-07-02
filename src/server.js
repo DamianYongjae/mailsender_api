@@ -40,15 +40,31 @@ server.options(
   })
 );
 
-server.use("/", router);
+router.options(
+  "*",
+  cors({
+    origin: "*",
+    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
 
-router.options("*", cors());
+router.post(
+  "https://mailsender-api.vercel.app/sendmail",
+  cors({ origin: "*" }),
+  sendmail
+);
 
-router.post("/sendmail", cors({ origin: "*" }), sendmail);
+server.post(
+  "https://mailsender-api.vercel.app/sendmail",
+  cors({ origin: "*" }),
+  sendmail
+);
 
 server.listen(4000, function () {
   console.log("app is listening");
 });
-
+// server.use("/", router);
 export { router };
 export default server;
