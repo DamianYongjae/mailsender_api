@@ -35,7 +35,6 @@ server.options(
   cors({
     origin: "*",
     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    origin: "*",
     credentials: true,
     optionsSuccessStatus: 200,
   })
