@@ -14,7 +14,7 @@ export const sendmail = async (req, res) => {
     );
 
     console.log(response);
-    res.end();
+    res.send(response);
     // .then((res) => res.json())
     // .then((data) => {
     //   console.log(`Success: ${data}`);
