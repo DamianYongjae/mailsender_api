@@ -9,7 +9,7 @@ export const sendmail = async (req, res) => {
   try {
     await sendScheduledMail(data.address, data.subject, data.content);
 
-    res.end();
+    return res.end();
   } catch (error) {
     console.log(error);
   }
