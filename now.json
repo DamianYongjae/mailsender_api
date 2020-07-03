@@ -1,36 +1,6 @@
 {
-  "type": "static",
   "env": {
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-4yo9"
   },
-  "regions": ["iad1"],
-  "headers": [
-    {
-      "source": "/sendmail",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept"
-        },
-        {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Content-Type",
-          "value": "application/json"
-        }
-      ]
-    }
-  ],
-  "mode": "cors",
-  "rewrites": [{ "source": "/sendmail", "destination": "/src/sendmail" }]
+  "regions": ["iad1"]
 }
