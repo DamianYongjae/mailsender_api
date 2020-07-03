@@ -13,8 +13,7 @@
         "Access-Control-Allow-Credentials": "true"
       },
       "src": "/.*",
-      "dest": "/server.js",
-      "mode": "cors"
+      "dest": "/server.js"
     }
   ]
 }
