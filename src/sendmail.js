@@ -7,7 +7,9 @@ export const sendmail = async (req, res) => {
     content: req.body.intention,
   };
   try {
-    await sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
+    await sendScheduledMail(data.address, data.subject, data.content)
+      .then((res) => res.json())
+      .then((data) => JSON.stringify(data)); // res.send(JSON.stringify(res));
     res.end();
   } catch (error) {
     console.log(error);
