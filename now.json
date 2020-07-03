@@ -6,7 +6,7 @@
   "routes": [
     {
       "headers": {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://mailsender-delta.vercel.app/",
         "Content-Type": "application/json",
         "Access-Control-Allow-Methods": "GET,POST,OPTIONS,HEAD",
         "Access-Control-Allow-Headers": "Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Access-Control-Allow-Origin, Content-Type",
