@@ -7,8 +7,20 @@ export const sendmail = async (req, res) => {
     content: req.body.intention,
   };
   try {
-    await sendScheduledMail(data.address, data.subject, data.content); // res.send(JSON.stringify(res));
+    const response = await sendScheduledMail(
+      data.address,
+      data.subject,
+      data.content
+    );
+
+    console.log(response);
     res.end();
+    // .then((res) => res.json())
+    // .then((data) => {
+    //   console.log(`Success: ${data}`);
+    //   res.send(JSON.stringify(data));
+    // })
+    // .catch((e) => console.log(`Error: ${e}`)); // res.send(JSON.stringify(res));
   } catch (error) {
     console.log(error);
   }

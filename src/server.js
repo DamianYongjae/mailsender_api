@@ -16,11 +16,12 @@ server.use(
 server.use(express.json({ type: ["application/json"] })); // for parsing application/json
 server.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-  res.header(
+  res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, Content-Type, X-Auth-Token, X-Requested-With, Accept, Authorization"
   );
+  res.setHeader("Access-Control-Allow-Credentials", true);
   res.header("Access-Control-Allow-Credentials", "true");
   if (req.method === "OPTIONS") {
     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
@@ -28,51 +29,52 @@ server.use((req, res, next) => {
   }
   next();
 });
-server.enable("trust proxy");
 
-server.options(
-  "*",
-  cors({
-    origin: "*",
-    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+// server.enable("trust proxy");
 
-router.options(
-  "*",
-  cors({
-    origin: "*",
-    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    credentials: true,
-    optionsSuccessStatus: 200,
-  })
-);
+// server.options(
+//   "*",
+//   cors({
+//     origin: "*",
+//     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+//     credentials: true,
+//     optionsSuccessStatus: 200,
+//   })
+// );
+
+// router.options(
+//   "*",
+//   cors({
+//     origin: "*",
+//     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+//     credentials: true,
+//     optionsSuccessStatus: 200,
+//   })
+// );
 
 router.post(
   "/sendmail",
-  cors({
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    origin: "*",
-    credentials: true,
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }),
+  // cors({
+  //   methods: ["GET", "POST", "OPTIONS"],
+  //   allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+  //   origin: "*",
+  //   credentials: true,
+  //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  // }),
   sendmail
 );
 
-server.post(
-  "/sendmail",
-  cors({
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    origin: "*",
-    credentials: true,
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }),
-  sendmail
-);
+// server.post(
+//   "/sendmail",
+//   cors({
+//     methods: ["GET", "POST", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+//     origin: "*",
+//     credentials: true,
+//     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+//   }),
+//   sendmail
+// );
 
 server.use(router);
 
