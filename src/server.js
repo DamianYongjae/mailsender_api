@@ -9,7 +9,7 @@ server.use(
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
     origin: "*",
-    credentials: true,
+    // credentials: true,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 );
@@ -35,7 +35,7 @@ server.options(
   cors({
     origin: "*",
     allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
-    credentials: true,
+    // credentials: true,
     optionsSuccessStatus: 200,
   })
 );

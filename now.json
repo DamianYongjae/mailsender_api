@@ -17,10 +17,6 @@
           "value": "X-Requested-With, Origin, X-HTTP-Method-Override, Content-Type, Authorization, Accept"
         },
         {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
-        },
-        {
           "key": "Access-Control-Allow-Methods",
           "value": "GET, POST, OPTIONS"
         },
