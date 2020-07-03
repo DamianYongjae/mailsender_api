@@ -2,5 +2,16 @@
   "env": {
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-4yo9"
   },
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "routes": [
+    {
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/.*",
+      "dest": "/server.js"
+    }
+  ]
 }
