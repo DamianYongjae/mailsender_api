@@ -10,7 +10,7 @@ export const sendScheduledMail = (address, subject, content) => {
     from: "CBLM@CBLM.com",
     to: address,
     subject: subject,
-    html: `기도 지향 내용: <p>${content}</p>`,
+    html: content,
     send_at: tempDate,
   };
 
