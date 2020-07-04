@@ -2,18 +2,5 @@
   "env": {
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-4yo9"
   },
-  "regions": ["iad1"],
-  "routes": [
-    {
-      "headers": {
-        "Access-Control-Allow-Origin": "https://mailsender-delta.vercel.app",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Access-Control-Allow-Origin, Content-Type",
-        "Access-Control-Allow-Credentials": "true"
-      },
-      "src": "/.*",
-      "dest": "/server.js"
-    }
-  ]
+  "regions": ["iad1"]
 }
