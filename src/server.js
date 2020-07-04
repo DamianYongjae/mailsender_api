@@ -18,10 +18,10 @@ server.use(express.urlencoded({ extended: true })); // for parsing application/x
 
 const router = express.Router();
 router.post("/sendmail", cors(), sendmail);
-router.options(
-  "*",
-  cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 })
-);
+// router.options(
+//   "*",
+//   cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 })
+// );
 
 server.use(router);
 
