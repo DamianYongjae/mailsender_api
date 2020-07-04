@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import { sendmail } from "./sendmail";
-import handler from "./cors-handler";
 
 var port = process.env.PORT || 4000;
 
@@ -20,10 +19,6 @@ server.use(express.urlencoded({ extended: true })); // for parsing application/x
 
 const router = express.Router();
 router.post("/sendmail", sendmail);
-// router.options(
-//   "*",
-//   cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 })
-// );
 
 server.use(router);
 
