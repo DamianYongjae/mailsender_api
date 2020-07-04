@@ -31,6 +31,6 @@
     "dev": "nodemon --exec babel-node src/server.js",
     "build": "babel src -d build",
     "start1": "nodemon --exec babel-node build/server.js",
-    "start": "node server.js"
+    "start": "node build/server.js"
   }
 }
