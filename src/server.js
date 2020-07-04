@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { sendmail } from "./sendmail";
+import handler from "./cors-handler";
 
 const server = express();
 server.use(
@@ -19,7 +20,8 @@ const router = express.Router();
 router.post("/sendmail", cors(), sendmail);
 router.options(
   "*",
-  cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 })
+  cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 }),
+  handler
 );
 
 server.use(router);
