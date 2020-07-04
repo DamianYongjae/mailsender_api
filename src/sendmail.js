@@ -1,6 +1,7 @@
 import { sendScheduledMail } from "./config";
 
 export const sendmail = async (req, res) => {
+  console.log("sendmail called!");
   let data = {
     address: req.body.email,
     subject: req.body.subject,
@@ -9,7 +10,7 @@ export const sendmail = async (req, res) => {
   try {
     await sendScheduledMail(data.address, data.subject, data.content);
 
-    return res.end();
+    res.end();
   } catch (error) {
     console.log(error);
   }
