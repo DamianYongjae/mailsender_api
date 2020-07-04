@@ -3,6 +3,8 @@ import express from "express";
 import { sendmail } from "./sendmail";
 import handler from "./cors-handler";
 
+var port = process.env.PORT || 4000;
+
 const server = express();
 server.use(
   cors({
@@ -25,8 +27,9 @@ router.post("/sendmail", sendmail);
 
 server.use(router);
 
-server.listen(4000, function () {
+server.listen(port, function () {
   console.log("app is listening");
 });
+
 export { router };
 export default server;
