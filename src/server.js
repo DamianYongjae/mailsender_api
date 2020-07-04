@@ -1,7 +1,6 @@
 import cors from "cors";
 import express from "express";
 import { sendmail } from "./sendmail";
-const router = express.Router();
 
 const server = express();
 server.use(
@@ -16,6 +15,7 @@ server.use(
 server.use(express.json({ type: ["application/json"] })); // for parsing application/json
 server.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+const router = express.Router();
 router.post("/sendmail", cors(), sendmail);
 router.options(
   "*",
