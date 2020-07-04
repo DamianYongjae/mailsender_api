@@ -9,8 +9,7 @@
         "Access-Control-Allow-Origin": "https://mailsender-delta.vercel.app",
         "Content-Type": "application/json",
         "Access-Control-Allow-Methods": "POST",
-        "Access-Control-Allow-Headers": "Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Access-Control-Allow-Origin, Content-Type",
-        "Access-Control-Allow-Credentials": "true"
+        "Access-Control-Allow-Headers": "Access-Control-Allow-Methods, Access-Control-Allow-Headers, Access-Control-Allow-Credentials, Access-Control-Allow-Origin, Content-Type"
       },
       "src": "/.*",
       "dest": "/server.js"
@@ -20,7 +19,6 @@
       "methods": ["OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Headers": "X-Requested-With, Access-Control-Allow-Origin, X-HTTP-Method-Override, Content-Type, Cache-Control, Authorization, Accept"
       },
       "dest": "/cors-handler.ts"
