@@ -16,7 +16,7 @@ server.use(
 server.use(express.json({ type: ["application/json"] })); // for parsing application/json
 server.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-router.post("/sendmail", sendmail);
+router.post("/sendmail", cors(), sendmail);
 router.options(
   "*",
   cors({ origin: "*", credentials: true, optionsSuccessStatus: 200 })
