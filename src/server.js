@@ -7,8 +7,8 @@ var port = process.env.PORT || 4000;
 const server = express();
 server.use(
   cors({
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
+    // methods: ["GET", "POST", "OPTIONS"],
+    // allowedHeaders: ["Content-Type", "Access-Control-Allow-Origin", "Accept"],
     origin: "*",
     credentials: true,
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
