@@ -11,7 +11,7 @@ export const sendScheduledMail = (address, subject, content) => {
     to: address,
     subject: subject,
     html: content,
-    send_at: date,
+    send_at: tempDate,
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
