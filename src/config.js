@@ -6,9 +6,12 @@ dotenv.config();
 export const sendScheduledMail = (address, subject, content) => {
   let date = Math.round(new Date("August 30, 2020 18:00:00").getTime() / 1000);
   let tempDate = Math.round(new Date().getTime() / 1000);
-  let now = new Date();
-  let time = Math.round(date.setMinutes(now.getMinutes() + 5).getTime() / 1000);
-  let sendTime = Math.round(date.setDate(now.getDate() + 2).getTime() / 1000);
+  let now1 = new Date();
+  let now2 = new Date();
+  let time = Math.round(
+    now1.setMinutes(now1.getMinutes() + 5).getTime() / 1000
+  );
+  let sendTime = Math.round(now2.setDate(now2.getDate() + 2).getTime() / 1000);
   const email = {
     from: "CBLM@CBLM.com",
     to: address,
