@@ -8,18 +8,14 @@ export const sendScheduledMail = (address, subject, content) => {
   let tempDate = Math.round(new Date().getTime() / 1000);
   let now1 = new Date();
   let now2 = new Date();
-  let time = Math.round(
-    now1.setMinutes(now1.getMinutes() + 5).getTime() / 1000
-  );
-  let sendTime = Math.round(now2.setDate(now2.getDate() + 2).getTime() / 1000);
+  let time = Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000);
+  let sendTime = Math.round(now2.setDate(now2.getDate() + 2) / 1000);
   const email = {
     from: "CBLM@CBLM.com",
     to: address,
     subject: subject,
     html: content,
-    send_at: Math.round(
-      now1.setMinutes(now1.getMinutes() + 5).getTime() / 1000
-    ),
+    send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
