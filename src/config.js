@@ -17,7 +17,9 @@ export const sendScheduledMail = (address, subject, content) => {
     to: address,
     subject: subject,
     html: content,
-    send_at: time,
+    send_at: Math.round(
+      now1.setMinutes(now1.getMinutes() + 5).getTime() / 1000
+    ),
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
