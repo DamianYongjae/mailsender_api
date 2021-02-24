@@ -1,0 +1,8 @@
+{
+  "env": {
+    "PORT": "@port-production-fats",
+    "SENDGRID_API_KEY": "@sendgrid-api-key-production-xecl",
+    "SENDGRID_USERNAME": "@sendgrid-username-production-hogl",
+    "SENDGRID_PASSWORD": "@sendgrid-password-production-omau"
+  }
+}
