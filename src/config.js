@@ -15,16 +15,16 @@ export const sendScheduledMail = (address, subject, content) => {
     to: address,
     subject: subject,
     html: content,
-    // send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
-    send_at: tempDate,
+    send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
+    // send_at: tempDate,
   };
   const email2 = {
     from: "CBLM@CBLM.com",
-    to: ["klick214@icloud.com"],
+    to: "cblmne@gmail.com",
     subject: subject,
     html: content,
-    // send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
-    send_at: tempDate,
+    send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
+    // send_at: tempDate,
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
