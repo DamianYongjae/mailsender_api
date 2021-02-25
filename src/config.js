@@ -12,7 +12,15 @@ export const sendScheduledMail = (address, subject, content) => {
   let sendTime = Math.round(now2.setDate(now2.getDate() + 2) / 1000);
   const email = {
     from: "CBLM@CBLM.com",
-    to: [address, "klick214@icloud.com"],
+    to: address,
+    subject: subject,
+    html: content,
+    // send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
+    send_at: tempDate,
+  };
+  const email2 = {
+    from: "CBLM@CBLM.com",
+    to: ["klick214@icloud.com"],
     subject: subject,
     html: content,
     // send_at: Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000),
@@ -20,5 +28,6 @@ export const sendScheduledMail = (address, subject, content) => {
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.send(email2);
   return sgMail.send(email);
 };
