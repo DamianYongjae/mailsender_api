@@ -28,6 +28,6 @@ export const sendScheduledMail = (address, subject, content) => {
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  sgMail.send(email2);
+  // sgMail.send(email2);
   return sgMail.send(email);
 };
