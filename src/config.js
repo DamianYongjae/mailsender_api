@@ -5,7 +5,7 @@ dotenv.config();
 
 export const sendScheduledMail = (address, subject, content) => {
   let date = Math.round(new Date("August 30, 2020 18:00:00").getTime() / 1000);
-  let tempDate = Math.round(new Date().getTime() / 1000);
+  // let tempDate = Math.round(new Date().getTime() / 1000);
   let now1 = new Date();
   let now2 = new Date();
   // let time = Math.round(now1.setMinutes(now1.getMinutes() + 5) / 1000);
