@@ -23,11 +23,11 @@ export const sendScheduledMail = (address, subject, content) => {
     to: "cblmne@gmail.com",
     subject: subject,
     html: content,
-    // send_at: Math.round(now2.setMinutes(now2.getMinutes() + 5) / 1000),
-    send_at: sendTime,
+    send_at: Math.round(now2.setMinutes(now2.getMinutes() + 5) / 1000),
+    // send_at: sendTime,
   };
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  // sgMail.send(email2);
+  sgMail.send(email2);
   return sgMail.send(email);
 };
